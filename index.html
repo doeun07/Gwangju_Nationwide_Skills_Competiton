@@ -1,121 +1,335 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>문화관광축제포털</title>
-    <link
-      rel="stylesheet"
-      href="./선수제공파일/공통제공파일/bootstrap-5.3.0-dist/css/bootstrap.css"
-    />
+    <link rel="stylesheet" href="./선수제공파일/공통제공파일/bootstrap-5.3.0-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!-- 헤더 영역 시작 -->
     <header>
-      <input id="close" type="radio" name="header" checked />
-      <input id="login" type="radio" name="header" />
-      <input id="register" type="radio" name="header" />
-      <a href="index.html"><img class="logo" src="./img/logo.png" alt="" /></a>
-      <ul>
-        <li><a href="#">Up comming 축제</a></li>
-        <li><a href="#">BEST 축제</a></li>
-        <li><a href="#">지역 별 축제</a></li>
-        <li><a href="#">이달의 축제</a></li>
-        <li><a href="#">마이페이지</a></li>
-      </ul>
-      <ul>
-        <li><label for="login">로그인</label></li>
-        <li><label for="register">회원가입</label></li>
-      </ul>
+        <input id="close" type="radio" name="header" checked />
+        <input id="login" type="radio" name="header" />
+        <input id="register" type="radio" name="header" />
+        <a href="index.html"><img class="logo" src="./img/logo.png" alt="" /></a>
+        <ul>
+            <li><a href="#">Up comming 축제</a></li>
+            <li><a href="#">BEST 축제</a></li>
+            <li><a href="#">지역 별 축제</a></li>
+            <li><a href="#">이달의 축제</a></li>
+            <li><a href="#">마이페이지</a></li>
+        </ul>
+        <ul>
+            <li><label for="login">로그인</label></li>
+            <li><label for="register">회원가입</label></li>
+        </ul>
 
-      <div id="loginModal" class="modal">
-        <div class="modal_body">
-          <h1>로그인</h1>
-          <form action="">
-            <input class="input" type="text" placeholder="아이디를 입력하세요." /> <br>
-            <input class="input" type="text" placeholder="비밀번호를 입력하세요." /> <br>
-            <button type="button" class="btn btn-light"><label for="close">닫기</label></button>
-            <button type="button" class="btn btn-dark">로그인</button>
-          </form>
+        <div id="loginModal" class="modal">
+            <div class="modal_body">
+                <h1>로그인</h1>
+                <form action="">
+                    <input class="input" type="text" placeholder="아이디를 입력하세요." />
+                    <br />
+                    <input class="input" type="text" placeholder="비밀번호를 입력하세요." />
+                    <br />
+                    <button type="button" class="btn btn-light">
+                        <label for="close">닫기</label>
+                    </button>
+                    <button type="button" class="btn btn-dark">로그인</button>
+                </form>
+            </div>
         </div>
-      </div>
 
-      <div id="registerModal" class="modal">
-        <div class="modal_body">
-          <h1>회원가입</h1>
-          <form action="">
-            <input class="input" type="text" placeholder="아이디를 입력하세요." /> <br>
-            <input class="input" type="text" placeholder="비밀번호를 입력하세요." /> <br>
-            <input class="input" type="text" placeholder="비밀번호 재확인" /> <br>
-            <img src="./img/캡차.png" alt=""> <br>
-            <input class="input" type="text" placeholder="위 코드를 입력하세요." /> <br>
-            <button type="button" class="btn btn-light"><label for="close">닫기</label></button>
-            <button type="button" class="btn btn-dark">회원가입</button>
-          </form>
+        <div id="registerModal" class="modal">
+            <div class="modal_body">
+                <h1>회원가입</h1>
+                <form action="">
+                    <input class="input" type="text" placeholder="아이디를 입력하세요." />
+                    <br />
+                    <input class="input" type="text" placeholder="비밀번호를 입력하세요." />
+                    <br />
+                    <input class="input" type="text" placeholder="비밀번호 재확인" />
+                    <br />
+                    <img src="./img/캡차.png" alt="" /> <br />
+                    <input class="input" type="text" placeholder="위 코드를 입력하세요." />
+                    <br />
+                    <button type="button" class="btn btn-light">
+                        <label for="close">닫기</label>
+                    </button>
+                    <button type="button" class="btn btn-dark">회원가입</button>
+                </form>
+            </div>
         </div>
-      </div>
     </header>
     <!-- 헤더 영역 끝 -->
 
     <!-- Up comming 축제 영역 시작 -->
     <div class="upComming">
-      <input id="slide1" type="radio" name="slide" checked />
-      <input id="slide2" type="radio" name="slide" />
-      <input id="slide3" type="radio" name="slide" />
+        <input id="slide1" type="radio" name="slide" checked />
+        <input id="slide2" type="radio" name="slide" />
+        <input id="slide3" type="radio" name="slide" />
 
-      <div id="slide_box1" class="slide">
-        <img src="./선수제공파일/images/CK_a0001tc001871.jpg" alt="" />
-        <div class="slide_text">
-          <label class="left" for="slide3">이전</label>
-          <h3>축제 제목</h3>
-          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
-          <p>개최 장소 : 경주 어딘가</p>
-          <button type="button" class="btn btn-primary">여행일정에 추가</button>
-          <label class="right" for="slide2">다음</label>
+        <div id="slide_box1" class="slide">
+            <img src="./선수제공파일/images/CK_a0001tc001871.jpg" alt="" />
+            <div class="slide_text">
+                <label class="left" for="slide3">이전</label>
+                <h3>축제 제목</h3>
+                <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+                <p>개최 장소 : 경주 어딘가</p>
+                <button type="button" class="btn btn-primary">여행일정에 추가</button>
+                <label class="right" for="slide2">다음</label>
+            </div>
         </div>
-      </div>
 
-      <div id="slide_box2" class="slide">
-        <img src="./선수제공파일/images/CK_cm260016722_l.jpg" alt="" />
-        <div class="slide_text">
-          <label class="left" for="slide1">이전</label>
-          <h3>축제 제목</h3>
-          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
-          <p>개최 장소 : 경주 어딘가</p>
-          <button type="button" class="btn btn-primary">여행일정에 추가</button>
-          <label class="right" for="slide3">다음</label>
+        <div id="slide_box2" class="slide">
+            <img src="./선수제공파일/images/CK_cm260016722_l.jpg" alt="" />
+            <div class="slide_text">
+                <label class="left" for="slide1">이전</label>
+                <h3>축제 제목</h3>
+                <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+                <p>개최 장소 : 경주 어딘가</p>
+                <button type="button" class="btn btn-primary">여행일정에 추가</button>
+                <label class="right" for="slide3">다음</label>
+            </div>
         </div>
-      </div>
 
-      <div id="slide_box3" class="slide">
-        <img src="./선수제공파일/images/CK_cm26004928_l.jpg" alt="" />
-        <div class="slide_text">
-          <label class="left" for="slide2">이전</label>
-          <h3>축제 제목</h3>
-          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
-          <p>개최 장소 : 경주 어딘가</p>
-          <button type="button" class="btn btn-primary">여행일정에 추가</button>
-          <label class="right" for="slide1">다음</label>
+        <div id="slide_box3" class="slide">
+            <img src="./선수제공파일/images/CK_cm26004928_l.jpg" alt="" />
+            <div class="slide_text">
+                <label class="left" for="slide2">이전</label>
+                <h3>축제 제목</h3>
+                <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+                <p>개최 장소 : 경주 어딘가</p>
+                <button type="button" class="btn btn-primary">여행일정에 추가</button>
+                <label class="right" for="slide1">다음</label>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Up comming 축제 영역 끝 -->
 
+    <!-- BEST 축제 섹션 시작 -->
+    <div class="best">
+        <div class="card" style="width:21rem">
+            <img src="./선수제공파일/images/CK_cm08188656_l.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">서울드럼페스티벌</h5>
+                <p class="card-text">축제 기간 : 2024-08-08 ~ 2024-08-11</p>
+                <p class="card-text">장소 : 노들섬</p>
+                <p class="card-text">좋아요 수 : 24</p>
+                <label for="서울드럼페스티벌" class="btn btn-primary">더보기</label>
+            </div>
+        </div>
+        <div class="card" style="width: 21rem">
+            <img src="./선수제공파일/images/CK_yaytg437359_l.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">서울뮤직페스티벌</h5>
+                <p class="card-text">축제 기간 : 2024-10-19 ~ 2024-10-21</p>
+                <p class="card-text">장소 : 노들섬</p>
+                <p class="card-text">좋아요 수 : 27</p>
+                <label for="서울뮤직페스티벌" class="btn btn-primary">더보기</label>
+            </div>
+        </div>
+        <div class="card" style="width: 21rem">
+            <img src="./선수제공파일/images/CK_tc00240073292_l.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">서울국악축제</h5>
+                <p class="card-text">축제 기간 : 2024-12-02 ~ 2024-12-04</p>
+                <p class="card-text">장소 : 미정</p>
+                <p class="card-text">좋아요 수 : 22</p>
+                <label for="서울국악축제" class="btn btn-primary">더보기</label>
+            </div>
+        </div>
+        <div class="card" style="width: 21rem">
+            <img src="./선수제공파일/images/CK_tc02290001711_l.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">서울페스타 2024</h5>
+                <p class="card-text">축제 기간 : 2024-05-27 ~ 2024-05-29</p>
+                <p class="card-text">장소 : 서울광장 광화문광장 등 서울 전역</p>
+                <p class="card-text">좋아요 수 : 29</p>
+                <label for="서울페스타" class="btn btn-primary">더보기</label>
+            </div>
+        </div>
+        <div class="card" style="width: 21rem">
+            <img src="./선수제공파일/images/CK_td01830000656_l.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">서울 바비큐 페스티벌</h5>
+                <p class="card-text">축제 기간 : 2024-02-25 ~ 2024-02-28</p>
+                <p class="card-text">장소 : 노을공원</p>
+                <p class="card-text">좋아요 수 : 21</p>
+                <label for="서울바비큐페스티벌" class="btn btn-primary">더보기</label>
+            </div>
+        </div>
+
+        <!-- 모달 영역 시작 -->
+        <input id="서울드럼페스티벌" type="radio" name="best" />
+        <input id="서울뮤직페스티벌" type="radio" name="best" />
+        <input id="서울국악축제" type="radio" name="best" />
+        <input id="서울페스타" type="radio" name="best" />
+        <input id="서울바비큐페스티벌" type="radio" name="best" />
+        <input id="닫기" type="radio" name="best" checked />
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="bestModal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="서울드림페스티벌Modal modal-title">
+                                서울드럼페스티벌
+                            </h5>
+                            <h5 class="서울뮤직페스티벌Modal modal-title">
+                                서울뮤직페스티벌
+                            </h5>
+                            <h5 class="서울국악축제Modal modal-title">서울국악축제</h5>
+                            <h5 class="서울페스타Modal modal-title">서울페스타 2024</h5>
+                            <h5 class="서울바비큐페스티벌Modal modal-title">
+                                서울 바비큐 페스티벌
+                            </h5>
+
+                            <label for="닫기" class="btn-close"></label>
+                        </div>
+                        <div class="modal-body">
+                            <img class="서울드림페스티벌Modal best_img" src="./선수제공파일/images/CK_cm08188656_l.jpg" alt="" />
+                            <img class="서울뮤직페스티벌Modal best_img" src="./선수제공파일/images/CK_yaytg437359_l.jpg" alt="" />
+                            <img class="서울국악축제Modal best_img" src="./선수제공파일/images/CK_tc00240073292_l.jpg" alt="" />
+                            <img class="서울페스타Modal best_img" src="./선수제공파일/images/CK_tc02290001711_l.jpg" alt="" />
+                            <img class="서울바비큐페스티벌Modal best_img" src="./선수제공파일/images/CK_td01830000656_l.jpg" alt="" />
+
+                            <table>
+                                <tr>
+                                    <th>축제 기간</th>
+                                    <td class="서울드림페스티벌Modal">
+                                        2024-08-08 ~ 2024-08-11
+                                    </td>
+                                    <td class="서울뮤직페스티벌Modal">
+                                        2024-10-19 ~ 2024-10-21
+                                    </td>
+                                    <td class="서울국악축제Modal">2024-12-02 ~ 2024-12-04</td>
+                                    <td class="서울페스타Modal">2024-05-27~ 2024-05-29</td>
+                                    <td class="서울바비큐페스티벌Modal">
+                                        2024-02-25 ~ 2024-02-28
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>개최 장소</th>
+                                    <td class="서울드림페스티벌Modal">노들섬</td>
+                                    <td class="서울뮤직페스티벌Modal">노들섬</td>
+                                    <td class="서울국악축제Modal">미정</td>
+                                    <td class="서울페스타Modal">
+                                        서울광장 광화문광장 등 서울 전역
+                                    </td>
+                                    <td class="서울바비큐페스티벌Modal">노을공원</td>
+                                </tr>
+                                <tr>
+                                    <th>개최 조직</th>
+                                    <td class="서울드림페스티벌Modal">서울시청</td>
+                                    <td class="서울뮤직페스티벌Modal">서울시청</td>
+                                    <td class="서울국악축제Modal">서울시청</td>
+                                    <td class="서울페스타Modal">서울시청</td>
+                                    <td class="서울바비큐페스티벌Modal">서울시청</td>
+                                </tr>
+                                <tr>
+                                    <th>담당 지자체</th>
+                                    <td class="서울드림페스티벌Modal">서울시 문화예술과</td>
+                                    <td class="서울뮤직페스티벌Modal">서울시 문화예술과</td>
+                                    <td class="서울국악축제Modal">서울시 문화예술과</td>
+                                    <td class="서울페스타Modal">서울관광재단</td>
+                                    <td class="서울바비큐페스티벌Modal">서울관광재단</td>
+                                </tr>
+                                <tr>
+                                    <th>담당 부서</th>
+                                    <td class="서울드림페스티벌Modal">문화예술과</td>
+                                    <td class="서울뮤직페스티벌Modal">문화예술과</td>
+                                    <td class="서울국악축제Modal">문화예술과</td>
+                                    <td class="서울페스타Modal">서울시청</td>
+                                    <td class="서울바비큐페스티벌Modal">서울시청</td>
+                                </tr>
+                                <tr>
+                                    <th>담당자 직책</th>
+                                    <td class="서울드림페스티벌Modal">주문관</td>
+                                    <td class="서울뮤직페스티벌Modal">주문관</td>
+                                    <td class="서울국악축제Modal">주문관</td>
+                                    <td class="서울페스타Modal">사무관</td>
+                                    <td class="서울바비큐페스티벌Modal">주문관</td>
+                                </tr>
+                                <tr>
+                                    <th>담당자 명</th>
+                                    <td class="서울드림페스티벌Modal">이유빈</td>
+                                    <td class="서울뮤직페스티벌Modal">유우진</td>
+                                    <td class="서울국악축제Modal">김지호</td>
+                                    <td class="서울페스타Modal">변시우</td>
+                                    <td class="서울바비큐페스티벌Modal">조시우</td>
+                                </tr>
+                                <tr>
+                                    <th>담당자 연락처</th>
+                                    <td class="서울드림페스티벌Modal">02-6222-0991</td>
+                                    <td class="서울뮤직페스티벌Modal">02-2825-9892</td>
+                                    <td class="서울국악축제Modal">02-1077-3726</td>
+                                    <td class="서울페스타Modal">02-1919-6938</td>
+                                    <td class="서울바비큐페스티벌Modal">02-2033-1628</td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <th colspan="3">2023년도 방문객 정보</th>
+                                </tr>
+                                <tr>
+                                    <th>내국인 수</th>
+                                    <td class="서울드림페스티벌Modal">12,500명</td>
+                                    <td class="서울뮤직페스티벌Modal">11,774명</td>
+                                    <td class="서울국악축제Modal">17,442명</td>
+                                    <td class="서울페스타Modal">149,670명</td>
+                                    <td class="서울바비큐페스티벌Modal">0명</td>
+                                </tr>
+                                <tr>
+                                    <th>외국인 수</th>
+                                    <td class="서울드림페스티벌Modal">0명</td>
+                                    <td class="서울뮤직페스티벌Modal">500명</td>
+                                    <td class="서울국악축제Modal">0명</td>
+                                    <td class="서울페스타Modal">242,330명</td>
+                                    <td class="서울바비큐페스티벌Modal">0명</td>
+                                </tr>
+                                <tr>
+                                    <th>합계</th>
+                                    <td class="서울드림페스티벌Modal">12,500명</td>
+                                    <td class="서울뮤직페스티벌Modal">12,274명</td>
+                                    <td class="서울국악축제Modal">17,442명</td>
+                                    <td class="서울페스타Modal">392,000명</td>
+                                    <td class="서울바비큐페스티벌Modal">0명</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger">좋아요</button>
+                            <button type="button" class="btn btn-dark">싫어요</button>
+                            <button type="button" class="btn btn-primary">
+                                여행 일정에 추가
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 모달 영역 끝 -->
+    </div>
+    <!-- BEST 축제 섹션 끝 -->
+
     <!-- 푸터 영역 시작 -->
     <footer>
-      <a href="#"
-        ><img class="logo footer_logo" src="./img/logo.png" alt=""
-      /></a>
-      <p>
-        Copyright : (C)Korea Cultural Festival Potal 2024 All rights reserved.
-      </p>
-      <div>
-        <a href="#"><img class="footer_SNS" src="./img/SNS1.png" alt="" /></a>
-        <a href="#"><img class="footer_SNS" src="./img/SNS2.png" alt="" /></a>
-        <a href="#"><img class="footer_SNS" src="./img/SNS3.png" alt="" /></a>
-      </div>
+        <a href="#"><img class="logo footer_logo" src="./img/logo.png" alt="" /></a>
+        <p>
+            Copyright : (C)Korea Cultural Festival Potal 2024 All rights reserved.
+        </p>
+        <div>
+            <a href="#"><img class="footer_SNS" src="./img/SNS1.png" alt="" /></a>
+            <a href="#"><img class="footer_SNS" src="./img/SNS2.png" alt="" /></a>
+            <a href="#"><img class="footer_SNS" src="./img/SNS3.png" alt="" /></a>
+        </div>
     </footer>
     <!-- 푸터 영역 끝 -->
-  </body>
+</body>
+
 </html>

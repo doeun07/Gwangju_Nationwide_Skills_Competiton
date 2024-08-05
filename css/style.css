@@ -1,3 +1,12 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -88,12 +97,13 @@ input[name="header"] {
 }
 
 #registerModal img {
-    width: 150px;
+  width: 150px;
 }
 
 #login:checked ~ #loginModal,
 #register:checked ~ #registerModal {
   display: flex;
+  animation: fadein 0.5s;
 }
 
 /* Up comming 축제 영역 */
@@ -214,6 +224,67 @@ input[name="slide"] {
 #slide3:checked ~ .slide {
   transform: translateX(-200%);
   animation: slide3 9s infinite;
+}
+
+/* best 축제 영역 */
+input[name="best"] {
+  display: none;
+}
+
+.best {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.card {
+  margin: 5px;
+}
+
+.best_img {
+  width: 200px;
+  height: 130px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.bestModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.bestModal table {
+  margin: 10px;
+}
+
+.bestModal table th,
+.bestModal table td {
+  border-bottom: 1px solid black;
+  text-align: center;
+  width: 210px;
+  padding: 10px;
+}
+
+#닫기:checked ~ .modal,
+.서울드림페스티벌Modal,
+.서울뮤직페스티벌Modal,
+.서울국악축제Modal,
+.서울페스타Modal,
+.서울바비큐페스티벌Modal {
+  display: none;
+}
+input[name="best"]:checked ~ .modal,
+#서울드럼페스티벌:checked ~ .modal .서울드림페스티벌Modal,
+#서울뮤직페스티벌:checked ~ .modal .서울뮤직페스티벌Modal,
+#서울국악축제:checked ~ .modal .서울국악축제Modal,
+#서울페스타:checked ~ .modal .서울페스타Modal,
+#서울바비큐페스티벌:checked ~ .modal .서울바비큐페스티벌Modal {
+  display: block;
+  animation: fadein 0.5s;
 }
 
 /* 푸터 영역 */
