@@ -135,7 +135,7 @@ input[name="slide"] {
 
 .slide_text {
   position: absolute;
-  top: 200px;
+  top: 280px;
   left: 400px;
   text-align: center;
   color: white;
@@ -147,14 +147,16 @@ input[name="slide"] {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  font-size: 50px;
 }
 
 .slide_text .right {
-  position: absolute;
-  right: -300px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
+    position: absolute;
+    right: -300px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 50px;
 }
 
 @keyframes slide1 {
