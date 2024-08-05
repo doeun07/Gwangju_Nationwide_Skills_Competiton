@@ -13,6 +13,9 @@
   <body>
     <!-- 헤더 영역 시작 -->
     <header>
+      <input id="close" type="radio" name="header" checked />
+      <input id="login" type="radio" name="header" />
+      <input id="register" type="radio" name="header" />
       <a href="index.html"><img class="logo" src="./img/logo.png" alt="" /></a>
       <ul>
         <li><a href="#">Up comming 축제</a></li>
@@ -22,15 +25,42 @@
         <li><a href="#">마이페이지</a></li>
       </ul>
       <ul>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">회원가입</a></li>
+        <li><label for="login">로그인</label></li>
+        <li><label for="register">회원가입</label></li>
       </ul>
+
+      <div id="loginModal" class="modal">
+        <div class="modal_body">
+          <h1>로그인</h1>
+          <form action="">
+            <input class="input" type="text" placeholder="아이디를 입력하세요." /> <br>
+            <input class="input" type="text" placeholder="비밀번호를 입력하세요." /> <br>
+            <button type="button" class="btn btn-light"><label for="close">닫기</label></button>
+            <button type="button" class="btn btn-dark">로그인</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="registerModal" class="modal">
+        <div class="modal_body">
+          <h1>회원가입</h1>
+          <form action="">
+            <input class="input" type="text" placeholder="아이디를 입력하세요." /> <br>
+            <input class="input" type="text" placeholder="비밀번호를 입력하세요." /> <br>
+            <input class="input" type="text" placeholder="비밀번호 재확인" /> <br>
+            <img src="./img/캡차.png" alt=""> <br>
+            <input class="input" type="text" placeholder="위 코드를 입력하세요." /> <br>
+            <button type="button" class="btn btn-light"><label for="close">닫기</label></button>
+            <button type="button" class="btn btn-dark">회원가입</button>
+          </form>
+        </div>
+      </div>
     </header>
     <!-- 헤더 영역 끝 -->
 
     <!-- Up comming 축제 영역 시작 -->
     <div class="upComming">
-      <input id="slide1" type="radio" name="slide" checked/>
+      <input id="slide1" type="radio" name="slide" checked />
       <input id="slide2" type="radio" name="slide" />
       <input id="slide3" type="radio" name="slide" />
 
