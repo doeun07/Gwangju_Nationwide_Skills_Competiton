@@ -292,6 +292,25 @@ input[name="best"]:checked ~ .modal,
   animation: fadein 0.5s;
 }
 
+/* 축제 찾기 영역 */
+.festival_find {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search input,
+.search select{
+  text-align: center;
+  width: 200px;
+  height: 40px;
+  margin: 0 5px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
 /* 푸터 영역 */
 footer {
   width: 100%;
