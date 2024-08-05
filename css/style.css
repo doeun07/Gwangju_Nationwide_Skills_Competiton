@@ -1,72 +1,190 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    padding-top: 80px;
+  padding-top: 80px;
 }
 
-ul, li {
-    list-style: none;
+ul,
+li {
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 /* 헤더 영역 */
-
 .logo {
-    width: 200px;
+  width: 200px;
 }
 
 header {
-    display: flex;
-    justify-content: space-around;
-    height: 80px;
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  height: 80px;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 header ul {
-    display: flex;
+  display: flex;
 }
 
 header ul li {
-    margin: 0 25px;
-    margin-top: 30px;
+  margin: 0 25px;
+  margin-top: 30px;
 }
 
 header ul li a:hover {
-    font-weight: 800;
+  font-weight: 800;
+}
+
+/* Up comming 축제 영역 */
+input[name="slide"] {
+  display: none;
+}
+
+.upComming {
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+}
+
+.slide > img {
+  width: 1000px;
+  height: 100%;
+}
+
+.slide_text {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  text-align: center;
+  color: white;
+}
+
+.slide_text .left {
+  position: absolute;
+  left: -380px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.slide_text .right {
+  position: absolute;
+  right: -300px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+@keyframes slide1 {
+  0%,
+  33.33%,
+  100% {
+    transform: translateX(0%);
+  }
+
+  38.33%,
+  71.66% {
+    transform: translateX(-100%);
+  }
+
+  76.66%,
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes slide2 {
+  0%,
+  33.33%,
+  100% {
+    transform: translateX(-100%);
+  }
+
+  38.33%,
+  71.66% {
+    transform: translateX(-200%);
+  }
+
+  76.66%,
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide3 {
+  0%,
+  33.33%,
+  100% {
+    transform: translateX(-200%);
+  }
+
+  38.33%,
+  71.66% {
+    transform: translateX(0%);
+  }
+
+  76.66%,
+  100% {
+    transform: translateX(-100%);
+}
+}
+
+#slide1:checked ~ .slide {
+    transform: translateX(0);
+    animation: slide1 9s infinite;
+}
+
+#slide2:checked ~ .slide {
+    transform: translateX(-100%);
+    animation: slide2 9s infinite;
+}
+
+#slide3:checked ~ .slide {
+    transform: translateX(-200%);
+    animation: slide3 9s infinite;
 }
 
 /* 푸터 영역 */
 footer {
-    width: 100%;
-    height: 400px;
-    background-color: gray;
-    margin-top: 100px;
+  width: 100%;
+  height: 400px;
+  background-color: gray;
+  margin-top: 100px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer > p {
-    margin: 0 50px;
+  margin: 0 50px;
 }
 
 .footer_logo {
-    filter: grayscale();
+  filter: grayscale();
 }
 
 .footer_SNS {
-    width: 50px;
-    border-radius: 10px;
+  width: 50px;
+  border-radius: 10px;
 }

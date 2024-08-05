@@ -1,41 +1,91 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>문화관광축제포털</title>
-    <link rel="stylesheet" href="./선수제공파일/공통제공파일/bootstrap-5.3.0-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="./선수제공파일/공통제공파일/bootstrap-5.3.0-dist/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <!-- 헤더 영역 시작 -->
     <header>
-        <a href="index.html"><img class="logo" src="./img/logo.png" alt=""></a>
-        <ul>
-            <li><a href="#">Up comming 축제</a></li>
-            <li><a href="#">BEST 축제</a></li>
-            <li><a href="#">지역 별 축제</a></li>
-            <li><a href="#">이달의 축제</a></li>
-            <li><a href="#">마이페이지</a></li>
-        </ul>
-        <ul>
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
-        </ul>
+      <a href="index.html"><img class="logo" src="./img/logo.png" alt="" /></a>
+      <ul>
+        <li><a href="#">Up comming 축제</a></li>
+        <li><a href="#">BEST 축제</a></li>
+        <li><a href="#">지역 별 축제</a></li>
+        <li><a href="#">이달의 축제</a></li>
+        <li><a href="#">마이페이지</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">회원가입</a></li>
+      </ul>
     </header>
     <!-- 헤더 영역 끝 -->
 
+    <!-- Up comming 축제 영역 시작 -->
+    <div class="upComming">
+      <input id="slide1" type="radio" name="slide" checked/>
+      <input id="slide2" type="radio" name="slide" />
+      <input id="slide3" type="radio" name="slide" />
+
+      <div id="slide_box1" class="slide">
+        <img src="./선수제공파일/images/CK_a0001tc001871.jpg" alt="" />
+        <div class="slide_text">
+          <label class="left" for="slide3">이전</label>
+          <h3>축제 제목</h3>
+          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+          <p>개최 장소 : 경주 어딘가</p>
+          <button type="button" class="btn btn-primary">여행일정에 추가</button>
+          <label class="right" for="slide2">다음</label>
+        </div>
+      </div>
+
+      <div id="slide_box2" class="slide">
+        <img src="./선수제공파일/images/CK_cm260016722_l.jpg" alt="" />
+        <div class="slide_text">
+          <label class="left" for="slide1">이전</label>
+          <h3>축제 제목</h3>
+          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+          <p>개최 장소 : 경주 어딘가</p>
+          <button type="button" class="btn btn-primary">여행일정에 추가</button>
+          <label class="right" for="slide3">다음</label>
+        </div>
+      </div>
+
+      <div id="slide_box3" class="slide">
+        <img src="./선수제공파일/images/CK_cm26004928_l.jpg" alt="" />
+        <div class="slide_text">
+          <label class="left" for="slide2">이전</label>
+          <h3>축제 제목</h3>
+          <p>축제 기간 : 2024-01-01 ~ 2024-12-12</p>
+          <p>개최 장소 : 경주 어딘가</p>
+          <button type="button" class="btn btn-primary">여행일정에 추가</button>
+          <label class="right" for="slide1">다음</label>
+        </div>
+      </div>
+    </div>
+    <!-- Up comming 축제 영역 끝 -->
+
     <!-- 푸터 영역 시작 -->
     <footer>
-        <a href="#"><img class="logo footer_logo" src="./img/logo.png" alt=""></a>
-        <p>Copyright : (C)Korea Cultural Festival Potal 2024 All rights reserved.</p>
-        <div>
-            <a href="#"><img class="footer_SNS" src="./img/SNS1.png" alt=""></a>
-            <a href="#"><img class="footer_SNS" src="./img/SNS2.png" alt=""></a>
-            <a href="#"><img class="footer_SNS" src="./img/SNS3.png" alt=""></a>
-        </div>
-
+      <a href="#"
+        ><img class="logo footer_logo" src="./img/logo.png" alt=""
+      /></a>
+      <p>
+        Copyright : (C)Korea Cultural Festival Potal 2024 All rights reserved.
+      </p>
+      <div>
+        <a href="#"><img class="footer_SNS" src="./img/SNS1.png" alt="" /></a>
+        <a href="#"><img class="footer_SNS" src="./img/SNS2.png" alt="" /></a>
+        <a href="#"><img class="footer_SNS" src="./img/SNS3.png" alt="" /></a>
+      </div>
     </footer>
     <!-- 푸터 영역 끝 -->
-</body>
+  </body>
 </html>
