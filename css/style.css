@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 80px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* 헤더 영역 */
+
+.logo {
+    width: 200px;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header ul {
+    display: flex;
+}
+
+header ul li {
+    margin: 0 25px;
+    margin-top: 30px;
+}
+
+header ul li a:hover {
+    font-weight: 800;
+}
+
+/* 푸터 영역 */
+footer {
+    width: 100%;
+    height: 400px;
+    background-color: gray;
+    margin-top: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer > p {
+    margin: 0 50px;
+}
+
+.footer_logo {
+    filter: grayscale();
+}
+
+.footer_SNS {
+    width: 50px;
+    border-radius: 10px;
+}
