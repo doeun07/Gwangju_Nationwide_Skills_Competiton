@@ -135,15 +135,18 @@ input[name="slide"] {
 
 .slide_text {
   position: absolute;
-  top: 280px;
-  left: 400px;
+  top: 200px;
+  left: 360px;
   text-align: center;
   color: white;
+  background-color: rgb(0, 0, 0, 0.7);
+  padding: 40px;
+  border-radius: 10px;
 }
 
 .slide_text .left {
   position: absolute;
-  left: -380px;
+  left: -350px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -152,7 +155,7 @@ input[name="slide"] {
 
 .slide_text .right {
     position: absolute;
-    right: -300px;
+    right: -270px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
