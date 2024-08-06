@@ -326,6 +326,22 @@ input[name="best"]:checked~.modal,
   border: 1px solid black;
 }
 
+.search_result table th,
+.search_result table td {
+  padding: 5px 10px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.search_result_menu {
+  text-align: center;
+  font-size: 30px;
+}
+
+.search_result_menu label {
+  cursor: pointer;
+}
+
 /* 이달의 축제 영역 */
 .calendar {
   margin-top: 50px;
