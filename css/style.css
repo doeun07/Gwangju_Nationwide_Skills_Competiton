@@ -338,6 +338,27 @@ input[name="best"]:checked~.modal,
 .calendar_menu {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.calendar table {
+  text-align: center;
+  table-layout: fixed;
+}
+
+.calendar table th,
+.calendar table td {
+  text-align: center;
+  width: 150px;
+  height: 100px;
+  border: 1px solid black;
+}
+
+.title {
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* 푸터 영역 */
