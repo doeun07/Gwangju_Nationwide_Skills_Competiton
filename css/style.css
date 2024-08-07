@@ -76,7 +76,7 @@ input[name="header"] {
 }
 
 .modal {
-  display: none;
+  /* display: none; */
   justify-content: center;
   background-color: rgb(0, 0, 0, 0.7);
 }
@@ -102,9 +102,9 @@ input[name="header"] {
   margin: 10px;
 }
 
-.modal_body button {
+/* .modal_body button {
   margin: 10px;
-}
+} */
 
 #registerModal img {
   width: 150px;
@@ -257,6 +257,11 @@ input[name="best"] {
   margin-top: 50px;
 }
 
+#festivals-container img {
+  width: 21rem;
+  height: 200px;
+}
+
 .card {
   margin: 5px;
 }
@@ -276,12 +281,12 @@ input[name="best"] {
   text-align: center;
 }
 
-.bestModal table {
+#bestFestivalModal table {
   margin: 10px;
 }
 
-.bestModal table th,
-.bestModal table td {
+#bestFestivalModal table th,
+#bestFestivalModal table td {
   border-bottom: 1px solid black;
   text-align: center;
   width: 210px;
@@ -297,7 +302,7 @@ input[name="best"] {
   display: none;
 }
 
-input[name="best"]:checked~.modal,
+/* input[name="best"]:checked~.modal,
 #서울드럼페스티벌:checked~.modal .서울드림페스티벌Modal,
 #서울뮤직페스티벌:checked~.modal .서울뮤직페스티벌Modal,
 #서울국악축제:checked~.modal .서울국악축제Modal,
@@ -305,7 +310,7 @@ input[name="best"]:checked~.modal,
 #서울바비큐페스티벌:checked~.modal .서울바비큐페스티벌Modal {
   display: block;
   animation: fadein 0.5s;
-}
+} */
 
 /* 축제 찾기 영역 */
 .festival_find {
