@@ -110,8 +110,8 @@ input[name="header"] {
   width: 150px;
 }
 
-#login:checked~#loginModal,
-#register:checked~#registerModal {
+#login:checked ~ #loginModal,
+#register:checked ~ #registerModal {
   display: flex;
   animation: fadein 0.5s;
 }
@@ -139,7 +139,7 @@ input[name="slide"] {
   height: 100%;
 }
 
-.slide>img {
+.slide > img {
   width: 1000px;
   height: 100%;
 }
@@ -174,7 +174,6 @@ input[name="slide"] {
 }
 
 @keyframes slide1 {
-
   0%,
   33.33%,
   100% {
@@ -193,7 +192,6 @@ input[name="slide"] {
 }
 
 @keyframes slide2 {
-
   0%,
   33.33%,
   100% {
@@ -212,7 +210,6 @@ input[name="slide"] {
 }
 
 @keyframes slide3 {
-
   0%,
   33.33%,
   100% {
@@ -230,17 +227,17 @@ input[name="slide"] {
   }
 }
 
-#slide1:checked~.slide {
+#slide1:checked ~ .slide {
   transform: translateX(0);
   animation: slide1 9s infinite;
 }
 
-#slide2:checked~.slide {
+#slide2:checked ~ .slide {
   transform: translateX(-100%);
   animation: slide2 9s infinite;
 }
 
-#slide3:checked~.slide {
+#slide3:checked ~ .slide {
   transform: translateX(-200%);
   animation: slide3 9s infinite;
 }
@@ -258,7 +255,6 @@ input[name="best"] {
 }
 
 #festivals-container img {
-  width: 21rem;
   height: 200px;
 }
 
@@ -293,7 +289,11 @@ input[name="best"] {
   padding: 10px;
 }
 
-#닫기:checked~.modal,
+#bestFestivalModal {
+  text-align: center;
+}
+
+#닫기:checked ~ .modal,
 .서울드림페스티벌Modal,
 .서울뮤직페스티벌Modal,
 .서울국악축제Modal,
@@ -347,6 +347,31 @@ input[name="best"] {
   cursor: pointer;
 }
 
+/* .clickable {
+  cursor: pointer;
+  transition: fill 0.3s;
+} */
+
+/* styles.css */
+
+/* styles.css */
+svg path {
+  fill: #6f9c76;
+  stroke: #ffffff;
+  transition: fill 0.3s ease; /* 호버 시 부드러운 전환 효과 */
+}
+
+svg path:hover {
+  fill: #ffcc00; /* 마우스 오버 시 색상 */
+}
+
+#sido {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+
 /* 이달의 축제 영역 */
 .calendar {
   margin-top: 50px;
@@ -394,7 +419,7 @@ footer {
   align-items: center;
 }
 
-footer>p {
+footer > p {
   margin: 0 50px;
 }
 
