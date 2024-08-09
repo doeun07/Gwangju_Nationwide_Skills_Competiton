@@ -121,6 +121,29 @@ input[name="slide"] {
   display: none;
 }
 
+.carousel-image {
+  max-height: 400px; /* 이미지 크기 줄이기 */
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* 텍스트 배경 색상 */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.carousel-caption h5 {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.carousel-caption p {
+  font-size: 1rem;
+  color: #dddddd;
+}
+
+
 .a {
   z-index: 0;
 }

@@ -406,3 +406,62 @@ prevMonthButton.addEventListener("click", () => navigateMonth(-1));
 nextMonthButton.addEventListener("click", () => navigateMonth(1));
 
 renderCalendar(currentDate);
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const eventsData = await fetchFestivalsData(); // 축제 데이터를 가져옴
+
+    const upcomingEvents = getUpcomingEvents(eventsData, 5); // 다가오는 5개의 축제 정보를 가져옴
+    populateCarousel(upcomingEvents); // 슬라이드에 추가
+
+    // 슬라이드 자동 재생 설정
+    const carousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
+        interval: 3000, // 3초마다 자동으로 슬라이드 넘김
+        wrap: true // 마지막 슬라이드 이후에 첫 번째 슬라이드로 돌아감
+    });
+});
+
+// 현재 날짜를 기준으로 다가오는 n개의 축제 정보를 반환하는 함수
+function getUpcomingEvents(eventsData, n) {
+    const today = new Date();
+    return eventsData
+        .filter(event => new Date(event.enddate) >= today) // 오늘 이후에 끝나는 축제만 필터링
+        .sort((a, b) => new Date(a.startdate) - new Date(b.startdate)) // 시작 날짜순 정렬
+        .slice(0, n); // 상위 n개의 축제 선택
+}
+
+// 다가오는 축제 정보를 슬라이드에 추가하는 함수
+function populateCarousel(events) {
+    const carouselInner = document.querySelector('.carousel-inner');
+    carouselInner.innerHTML = ''; // 기존 슬라이드 내용 초기화
+
+    events.forEach((event, index) => {
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('carousel-item');
+        if (index === 0) carouselItem.classList.add('active'); // 첫 번째 아이템 활성화
+
+        const img = document.createElement('img');
+        img.src = `./선수제공파일/images/${event.photo}`; // 축제 이미지 경로
+        img.classList.add('d-block', 'w-100', 'carousel-image'); // 이미지 크기 조정
+        img.alt = event.title; // 축제 제목을 alt 속성으로 사용
+
+        const carouselCaption = document.createElement('div');
+        carouselCaption.classList.add('carousel-caption', 'd-none', 'd-md-block');
+
+        const title = document.createElement('h5');
+        title.textContent = event.title;
+
+        const period = document.createElement('p');
+        period.textContent = `기간: ${event.startdate} ~ ${event.enddate}`;
+
+        const location = document.createElement('p');
+        location.textContent = `장소: ${event.place}`;
+
+        carouselCaption.appendChild(title);
+        carouselCaption.appendChild(period);
+        carouselCaption.appendChild(location);
+
+        carouselItem.appendChild(img);
+        carouselItem.appendChild(carouselCaption);
+        carouselInner.appendChild(carouselItem);
+    });
+}
