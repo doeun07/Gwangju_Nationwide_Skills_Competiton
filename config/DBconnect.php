@@ -1,11 +1,11 @@
 <?php
 $host = 'localhost';
-$dbname = 'gwangiu';
+$dbname = 'gwangju';
 $username = 'root';
-$password = '1234';
+$password = '';
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname, $username, $password");
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
