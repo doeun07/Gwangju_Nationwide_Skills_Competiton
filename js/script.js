@@ -227,23 +227,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 영어 이름을 한글 이름으로 매핑하는 객체
   const nameMapping = {
-    "Seoul": "서울",
-    "Busan": "부산",
-    "Daegu": "대구",
-    "Incheon": "인천",
-    "Gwangju": "광주",
-    "Daejeon": "대전",
-    "Ulsan": "울산",
-    "Sejong": "세종",
-    "Gyeonggi": "경기",
-    "Gangwon": "강원",
+    Seoul: "서울",
+    Busan: "부산",
+    Daegu: "대구",
+    Incheon: "인천",
+    Gwangju: "광주",
+    Daejeon: "대전",
+    Ulsan: "울산",
+    Sejong: "세종",
+    Gyeonggi: "경기",
+    Gangwon: "강원",
     "North Chungcheong": "충북",
     "South Chungcheong": "충남",
     "North Jeolla": "전북",
     "South Jeolla": "전남",
     "North Gyeongsang": "경북",
     "South Gyeongsang": "경남",
-    "Jeju": "제주",
+    Jeju: "제주",
   };
 
   // 각 path 요소에 대해 이벤트 리스너를 설정
@@ -304,3 +304,105 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// 이달의 축제 달력
+const calendarDates = document.getElementById("calendar-dates");
+const monthYear = document.getElementById("month-year");
+const prevMonthButton = document.getElementById("prev-month");
+const nextMonthButton = document.getElementById("next-month");
+
+let currentDate = new Date();
+
+async function renderCalendar(date) {
+  const eventsData = await fetchFestivalsData(); // 축제 데이터를 가져옴
+  const eventsMap = {};
+
+  // 주어진 이벤트 데이터를 기반으로 이벤트 매핑하기
+  eventsData.forEach((event) => {
+    const eventDate = event.startdate;
+    if (!eventsMap[eventDate]) {
+      eventsMap[eventDate] = [];
+    }
+    eventsMap[eventDate].push(event);
+  });
+
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const firstDayOfMonth = new Date(year, month, 1).getDay();
+  const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+  // Setting month and year in the header
+  const monthNames = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
+  monthYear.innerText = `${year}년 ${monthNames[month]}월`;
+
+  // Clearing previous dates
+  calendarDates.innerHTML = "";
+
+  let dateCounter = 1;
+  for (let i = 0; i < 6; i++) {
+    // 최대 6주간 표현 가능
+    const row = document.createElement("tr");
+
+    for (let j = 0; j < 7; j++) {
+      const cell = document.createElement("td");
+
+      if (i === 0 && j < firstDayOfMonth) {
+        cell.innerText = "";
+      } else if (dateCounter > lastDateOfMonth) {
+        cell.innerText = "";
+      } else {
+        // 날짜 표시
+        const dateSpan = document.createElement("span");
+        dateSpan.innerText = dateCounter;
+        cell.appendChild(dateSpan); // 날짜를 먼저 추가
+
+        // 현재 날짜 형식으로 변환
+        const eventDate = `${year}-${String(month + 1).padStart(
+          2,
+          "0"
+        )}-${String(dateCounter).padStart(2, "0")}`;
+
+        // 날짜에 맞는 축제 제목 확인 및 추가
+        if (eventsMap[eventDate]) {
+          eventsMap[eventDate].forEach((event) => {
+            const eventP = document.createElement("p");
+            eventP.className = "title";
+            eventP.innerText = event.title;
+            eventP.style.cursor = "pointer"; // 클릭 가능한 커서로 변경
+            eventP.addEventListener("click", () => bestFestival(event.id)); // 클릭 시 bestFestival(id) 실행
+            cell.appendChild(eventP); // 제목을 날짜 아래에 추가
+          });
+        }
+
+        dateCounter++;
+      }
+
+      row.appendChild(cell);
+    }
+
+    calendarDates.appendChild(row);
+  }
+}
+
+function navigateMonth(offset) {
+  currentDate.setMonth(currentDate.getMonth() + offset);
+  renderCalendar(currentDate);
+}
+
+prevMonthButton.addEventListener("click", () => navigateMonth(-1));
+nextMonthButton.addEventListener("click", () => navigateMonth(1));
+
+renderCalendar(currentDate);

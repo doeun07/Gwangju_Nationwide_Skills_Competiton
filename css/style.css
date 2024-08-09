@@ -407,6 +407,14 @@ svg path:hover {
   white-space: nowrap;
 }
 
+#calendar-dates td {
+  padding: 5px
+}
+
+#calendar-dates p:hover {
+  font-weight: 900;
+}
+
 /* 푸터 영역 */
 footer {
   width: 100%;
