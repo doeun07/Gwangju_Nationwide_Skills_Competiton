@@ -154,6 +154,8 @@ input[name="slide"] {
   display: flex;
   overflow: hidden;
   margin: 0 auto;
+  text-align: center;
+  flex-direction: column;
 }
 
 .slide {
@@ -461,4 +463,9 @@ footer > p {
 .footer_SNS {
   width: 50px;
   border-radius: 10px;
+}
+
+#captcha_img {
+  width: 100px;
+  height: 100px;
 }

@@ -25,7 +25,7 @@
         </ul>
         <ul>
             <li><label for="login">로그인</label></li>
-            <li><label for="register">회원가입</label></li>
+            <li><label onclick="captcha()" for="register">회원가입</label></li>
         </ul>
 
         <div id="loginModal" class="modal">
@@ -48,19 +48,22 @@
             <div class="modal_body">
                 <h1>회원가입</h1>
                 <form action="">
-                    <input class="input" type="text" placeholder="아이디를 입력하세요." />
+                    <input id="userid" class="input" type="text" placeholder="아이디를 입력하세요." />
                     <br />
-                    <input class="input" type="text" placeholder="비밀번호를 입력하세요." />
+                    <input id="username" class="input" type="text" placeholder="이름을 입력하세요." />
                     <br />
-                    <input class="input" type="text" placeholder="비밀번호 재확인" />
+                    <input id="password" class="input" type="password" placeholder="비밀번호를 입력하세요." />
                     <br />
-                    <img src="./img/캡차.png" alt="" /> <br />
-                    <input class="input" type="text" placeholder="위 코드를 입력하세요." />
+                    <input id="passwordCheck" class="input" type="password" placeholder="비밀번호 재확인" />
+                    <br />
+                    <img id="captcha_img" src="" alt="" /> <br />
+                    <input id="captcha" class="input" type="text" placeholder="캡차 코드 입력" />
+                    <button onclick="captcha()" type="button" class="btn btn-dark">새로고침</button>
                     <br />
                     <button type="button" class="btn btn-light">
                         <label for="close">닫기</label>
                     </button>
-                    <button type="button" class="btn btn-dark">회원가입</button>
+                    <button onclick="register()" type="button" class="btn btn-dark">회원가입</button>
                 </form>
             </div>
         </div>
@@ -68,19 +71,22 @@
     <!-- 헤더 영역 끝 -->
 
     <!-- Up comming 축제 영역 시작 -->
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-        <div class="carousel-inner">
-            <!-- JavaScript로 동적으로 추가될 내용 -->
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
+     <div class="upComming">
+        <h1>Up Comming 축제</h1>
+         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+             <div class="carousel-inner">
+                 <!-- JavaScript로 동적으로 추가될 내용 -->
+             </div>
+             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 <span class="visually-hidden">Previous</span>
+             </button>
+             <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                 <span class="visually-hidden">Next</span>
+             </button>
+         </div>
+     </div>
     
     
     <!-- <div class="upComming">
@@ -127,7 +133,11 @@
     <!-- Up comming 축제 영역 끝 -->
 
     <!-- BEST 축제 섹션 시작 -->
-    <div id="festivals-container" class="best"></div>
+
+    <div>
+        <h1>BEST 축제</h1>
+        <div id="festivals-container" class="best"></div>
+    </div>
     <!-- BEST 축제 섹션 끝 -->
 
     <!-- 축제 찾기 섹션 시작 -->

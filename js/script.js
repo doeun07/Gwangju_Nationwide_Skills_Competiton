@@ -465,3 +465,59 @@ function populateCarousel(events) {
         carouselInner.appendChild(carouselItem);
     });
 }
+
+// 회원가입
+function register() {
+  const userid = document.querySelector("#userid").value;
+  const username = document.querySelector("#username").value;
+  const password = document.querySelector("#password").value;
+  const passwordCheck = document.querySelector("#passwordCheck").value;
+  const captcha = document.querySelector("#captcha").value;
+
+  if(!userid) {
+    alert("아이디를 입력해주세요.");
+  } else if(!username) {
+    alert("이름을 입력해주세요.");
+  } else if(!password) {
+    alert("비밀번호를 입력해주세요.");
+  } else if(!passwordCheck) {
+    alert("비밀번호 재확인 입력해주세요.")
+  } else if(!captcha) {
+    alert("캡차 코드를 입력해주세요.")
+  } else if(password != passwordCheck) {
+    alert("비밀번호 재확인해주세요.")
+  } else {
+    $.post("./C_Module/api/register", {
+      userid: userid,
+      username: username,
+      password: password,
+      captcha: captcha
+    }).done(function (data) {
+      if(data == "회원가입이 완료되었습니다.") {
+        alert(data);
+        location.href = "./";
+      } else if(data == "캡차를 다시 입력해주세요.") {
+        alert(data);
+        captcha();
+        captcha.value ="";
+      } else {
+        alert(data);
+        console.log(data);
+      }
+    })
+  }
+}
+
+function captcha() {
+  const captcha_img = document.querySelector("#captcha_img");
+  $.get("./C_Module/api/register", function(data) {
+      if (!data) {
+          console.error("Failed to generate captcha.");
+      } else {
+          captcha_img.src = data;  // 서버에서 받은 URL을 이미지 src에 할당
+          console.log(data)
+      }
+  }).fail(function() {
+      console.error("Failed to load captcha image.");
+  });
+}
