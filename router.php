@@ -7,18 +7,16 @@ $resource = explode("/", $path[0]);
 
 $page = "";
 
-switch ($resource[1]) {
-    case '':
-        $page = "./pages/index.html";
-        break;
-    case 'mypage':
-        $page = "./pages/mypage.php";
+// echo $resource[3];
+
+switch ($resource[3]) {
+    case 'register':
+        $page = "./C_Module/api/register.php";
         break;
     default:
         echo "잘못된 접근입니다.";
         break;
 }
-
 
 include($page);
 ?>
