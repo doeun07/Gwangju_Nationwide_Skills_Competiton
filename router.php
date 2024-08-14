@@ -13,10 +13,15 @@ switch ($resource[3]) {
     case 'register':
         $page = "./C_Module/api/register.php";
         break;
+    case 'login':
+        $page = "./C_Module/api/login.php";
+        break;
+    case 'logout':
+        $page = "./C_Module/api/logout.php";
+        break;
     default:
         echo "잘못된 접근입니다.";
         break;
 }
 
 include($page);
-?>

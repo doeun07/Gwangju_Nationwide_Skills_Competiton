@@ -407,63 +407,66 @@ nextMonthButton.addEventListener("click", () => navigateMonth(1));
 
 renderCalendar(currentDate);
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const eventsData = await fetchFestivalsData(); // 축제 데이터를 가져옴
+document.addEventListener("DOMContentLoaded", async () => {
+  const eventsData = await fetchFestivalsData(); // 축제 데이터를 가져옴
 
-    const upcomingEvents = getUpcomingEvents(eventsData, 5); // 다가오는 5개의 축제 정보를 가져옴
-    populateCarousel(upcomingEvents); // 슬라이드에 추가
+  const upcomingEvents = getUpcomingEvents(eventsData, 5); // 다가오는 5개의 축제 정보를 가져옴
+  populateCarousel(upcomingEvents); // 슬라이드에 추가
 
-    // 슬라이드 자동 재생 설정
-    const carousel = new bootstrap.Carousel(document.querySelector('#carouselExample'), {
-        interval: 3000, // 3초마다 자동으로 슬라이드 넘김
-        wrap: true // 마지막 슬라이드 이후에 첫 번째 슬라이드로 돌아감
-    });
+  // 슬라이드 자동 재생 설정
+  const carousel = new bootstrap.Carousel(
+    document.querySelector("#carouselExample"),
+    {
+      interval: 3000, // 3초마다 자동으로 슬라이드 넘김
+      wrap: true, // 마지막 슬라이드 이후에 첫 번째 슬라이드로 돌아감
+    }
+  );
 });
 
 // 현재 날짜를 기준으로 다가오는 n개의 축제 정보를 반환하는 함수
 function getUpcomingEvents(eventsData, n) {
-    const today = new Date();
-    return eventsData
-        .filter(event => new Date(event.enddate) >= today) // 오늘 이후에 끝나는 축제만 필터링
-        .sort((a, b) => new Date(a.startdate) - new Date(b.startdate)) // 시작 날짜순 정렬
-        .slice(0, n); // 상위 n개의 축제 선택
+  const today = new Date();
+  return eventsData
+    .filter((event) => new Date(event.enddate) >= today) // 오늘 이후에 끝나는 축제만 필터링
+    .sort((a, b) => new Date(a.startdate) - new Date(b.startdate)) // 시작 날짜순 정렬
+    .slice(0, n); // 상위 n개의 축제 선택
 }
 
 // 다가오는 축제 정보를 슬라이드에 추가하는 함수
 function populateCarousel(events) {
-    const carouselInner = document.querySelector('.carousel-inner');
-    carouselInner.innerHTML = ''; // 기존 슬라이드 내용 초기화
+  const carouselInner = document.querySelector(".carousel-inner");
+  carouselInner.innerHTML = ""; // 기존 슬라이드 내용 초기화
 
-    events.forEach((event, index) => {
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
-        if (index === 0) carouselItem.classList.add('active'); // 첫 번째 아이템 활성화
+  events.forEach((event, index) => {
+    const carouselItem = document.createElement("div");
+    carouselItem.classList.add("carousel-item");
+    if (index === 0) carouselItem.classList.add("active"); // 첫 번째 아이템 활성화
 
-        const img = document.createElement('img');
-        img.src = `./선수제공파일/images/${event.photo}`; // 축제 이미지 경로
-        img.classList.add('d-block', 'w-100', 'carousel-image'); // 이미지 크기 조정
-        img.alt = event.title; // 축제 제목을 alt 속성으로 사용
+    const img = document.createElement("img");
+    img.src = `./선수제공파일/images/${event.photo}`; // 축제 이미지 경로
+    img.classList.add("d-block", "w-100", "carousel-image"); // 이미지 크기 조정
+    img.alt = event.title; // 축제 제목을 alt 속성으로 사용
 
-        const carouselCaption = document.createElement('div');
-        carouselCaption.classList.add('carousel-caption', 'd-none', 'd-md-block');
+    const carouselCaption = document.createElement("div");
+    carouselCaption.classList.add("carousel-caption", "d-none", "d-md-block");
 
-        const title = document.createElement('h5');
-        title.textContent = event.title;
+    const title = document.createElement("h5");
+    title.textContent = event.title;
 
-        const period = document.createElement('p');
-        period.textContent = `기간: ${event.startdate} ~ ${event.enddate}`;
+    const period = document.createElement("p");
+    period.textContent = `기간: ${event.startdate} ~ ${event.enddate}`;
 
-        const location = document.createElement('p');
-        location.textContent = `장소: ${event.place}`;
+    const location = document.createElement("p");
+    location.textContent = `장소: ${event.place}`;
 
-        carouselCaption.appendChild(title);
-        carouselCaption.appendChild(period);
-        carouselCaption.appendChild(location);
+    carouselCaption.appendChild(title);
+    carouselCaption.appendChild(period);
+    carouselCaption.appendChild(location);
 
-        carouselItem.appendChild(img);
-        carouselItem.appendChild(carouselCaption);
-        carouselInner.appendChild(carouselItem);
-    });
+    carouselItem.appendChild(img);
+    carouselItem.appendChild(carouselCaption);
+    carouselInner.appendChild(carouselItem);
+  });
 }
 
 // 회원가입
@@ -474,50 +477,163 @@ function register() {
   const passwordCheck = document.querySelector("#passwordCheck").value;
   const captcha = document.querySelector("#captcha").value;
 
-  if(!userid) {
+  if (!userid) {
     alert("아이디를 입력해주세요.");
-  } else if(!username) {
+  } else if (!username) {
     alert("이름을 입력해주세요.");
-  } else if(!password) {
+  } else if (!password) {
     alert("비밀번호를 입력해주세요.");
-  } else if(!passwordCheck) {
-    alert("비밀번호 재확인 입력해주세요.")
-  } else if(!captcha) {
-    alert("캡차 코드를 입력해주세요.")
-  } else if(password != passwordCheck) {
-    alert("비밀번호 재확인해주세요.")
+  } else if (!passwordCheck) {
+    alert("비밀번호 재확인 입력해주세요.");
+  } else if (!captcha) {
+    alert("캡차 코드를 입력해주세요.");
+  } else if (password != passwordCheck) {
+    alert("비밀번호 재확인해주세요.");
   } else {
     $.post("./C_Module/api/register", {
       userid: userid,
       username: username,
       password: password,
-      captcha: captcha
+      captcha: captcha,
     }).done(function (data) {
-      if(data == "회원가입이 완료되었습니다.") {
+      if (data == "회원가입이 완료되었습니다.") {
         alert(data);
         location.href = "./";
-      } else if(data == "캡차를 다시 입력해주세요.") {
+      } else if (data == "캡차를 다시 입력해주세요.") {
         alert(data);
         captcha();
-        captcha.value ="";
+        captcha.value = "";
       } else {
         alert(data);
         console.log(data);
       }
-    })
+    });
   }
 }
 
 function captcha() {
   const captcha_img = document.querySelector("#captcha_img");
-  $.get("./C_Module/api/register", function(data) {
-      if (!data) {
-          console.error("Failed to generate captcha.");
-      } else {
-          captcha_img.src = data;  // 서버에서 받은 URL을 이미지 src에 할당
-          console.log(data)
-      }
-  }).fail(function() {
-      console.error("Failed to load captcha image.");
+  $.get("./C_Module/api/register", function (data) {
+    if (!data) {
+      console.error("Failed to generate captcha.");
+    } else {
+      captcha_img.src = data; // 서버에서 받은 URL을 이미지 src에 할당
+      console.log(data);
+    }
+  }).fail(function () {
+    console.error("Failed to load captcha image.");
   });
 }
+
+function login() {
+  const id = document.querySelector("#id").value;
+  const pw = document.querySelector("#pw").value;
+
+  if (!id) {
+    alert("아이디를 입력해주세요.");
+  } else if (!pw) {
+    alert("비밀번호를 입력해주세요.");
+  } else {
+    $.post("./C_Module/api/login", {
+      userid: id,
+      userpassword: pw,
+    }).done(function (data) {
+      if (data.message === "로그인 성공") {
+        alert(data.message);
+        setCookie("token", data.token, 7);
+        setCookie("userid", data.id, 7);
+        setCookie("username", data.name, 7);
+        location.href = "./";
+      } else if (data.message === "로그인 실패") {
+        alert(data.message);
+      } else {
+        console.log(data);
+      }
+    });
+  }
+}
+
+// setCookie("test", "testValue", 1);
+// console.log("Test cookie:", getCookie("test"));
+// deleteCookie("test");
+
+// 쿠키 저장하는 함수
+function setCookie(name, value, days) {
+  var date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000); // days 단위로 변환
+  document.cookie =
+    encodeURIComponent(name) +
+    "=" +
+    encodeURIComponent(value) +
+    ";expires=" +
+    date.toUTCString() +
+    ";path=/";
+}
+
+// 쿠키 값 가져오는 함수
+function getCookie(name) {
+  var value = document.cookie.match("(^|;) ?" + name + "=([^;]*)(;|$)");
+  return value ? decodeURIComponent(value[2]) : null;
+}
+
+// 쿠키 삭제하는 함수
+function deleteCookie(name) {
+  document.cookie =
+    encodeURIComponent(name) +
+    "=; expires=Thu, 01 JAN 1999 00:00:10 GMT;path=/";
+}
+
+function logout() {
+  $.post("./C_Module/api/logout", {
+    userid: getCookie("userid"),
+    username: getCookie("username"),
+    token: getCookie("token"),
+  }).done(function (data) {
+    if (data == "로그아웃 성공") {
+      deleteCookie("token");
+      deleteCookie("userid");
+      deleteCookie("username");
+      location.href = "./";
+    } else {
+      console.log(data);
+    }
+  });
+}
+
+function loginCheck() {
+  const header_section = document.querySelector("#header_section");
+  const mypage = document.querySelector("#mypage");
+  let headerElem = "";
+  let mypageElem = `<a href="#">마이페이지</a>`;
+  mypage.innerHTML = mypageElem;
+  if (!getCookie("token")) {
+    // alert("로그인 후 이용해주세요.");
+    headerElem = `<li><label for="login">로그인</label></li>
+            <li><label onclick="captcha()" for="register">회원가입</label></li>`;
+    header_section.innerHTML = headerElem;
+  } else if (getCookie("token")) {
+    // console.log(getCookie("token"));
+    $.get("./C_Module/api/login", {
+      // userid: getCookie("userid"),
+      // userid: getCookie("username"),
+      token: getCookie("token"),
+    }).done(function (data) {
+      if (data == "이미 로그인 되었습니다.") {
+        headerElem = `<li><label onclick="logout()">로그아웃</label></li>`;
+        header_section.innerHTML = headerElem;
+        if ((getCookie("userid") == "admin")) {
+          mypageElem = `<a href="#">관리자페이지</a>`;
+          mypage.innerHTML = mypageElem;
+        }
+      } else {
+        alert(data);
+      }
+    });
+  } else {
+    headerElem = `<li><label for="login">로그인</label></li>
+    <li><label onclick="captcha()" for="register">회원가입</label></li>`;
+    header_section.innerHTML = headerElem;
+  }
+}
+
+loginCheck();

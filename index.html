@@ -21,25 +21,28 @@
             <li><a href="#">BEST 축제</a></li>
             <li><a href="#">지역 별 축제</a></li>
             <li><a href="#">이달의 축제</a></li>
-            <li><a href="#">마이페이지</a></li>
+            <li id="mypage"><a href="#">마이페이지</a></li>
         </ul>
-        <ul>
-            <li><label for="login">로그인</label></li>
+        <ul id="header_section">
+            <!-- <li><label for="login">로그인</label></li>
             <li><label onclick="captcha()" for="register">회원가입</label></li>
+            <li><a href="./mypage.php">마이페이지</a></li>
+            <li><label onclick="logout()">로그아웃</label></li> -->
+            <!-- <li><a href="./admin.php">관리자 페이지</a></li> -->
         </ul>
 
         <div id="loginModal" class="modal">
             <div class="modal_body">
                 <h1>로그인</h1>
                 <form action="">
-                    <input class="input" type="text" placeholder="아이디를 입력하세요." />
+                    <input id="id" class="input" type="text" placeholder="아이디를 입력하세요." />
                     <br />
-                    <input class="input" type="text" placeholder="비밀번호를 입력하세요." />
+                    <input id="pw" class="input" type="password" placeholder="비밀번호를 입력하세요." />
                     <br />
                     <button type="button" class="btn btn-light">
                         <label for="close">닫기</label>
                     </button>
-                    <button type="button" class="btn btn-dark">로그인</button>
+                    <button onclick="login()" type="button" class="btn btn-dark">로그인</button>
                 </form>
             </div>
         </div>
@@ -71,24 +74,24 @@
     <!-- 헤더 영역 끝 -->
 
     <!-- Up comming 축제 영역 시작 -->
-     <div class="upComming">
+    <div class="upComming">
         <h1>Up Comming 축제</h1>
-         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-             <div class="carousel-inner">
-                 <!-- JavaScript로 동적으로 추가될 내용 -->
-             </div>
-             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                 <span class="visually-hidden">Previous</span>
-             </button>
-             <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                 <span class="visually-hidden">Next</span>
-             </button>
-         </div>
-     </div>
-    
-    
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <!-- JavaScript로 동적으로 추가될 내용 -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
     <!-- <div class="upComming">
         <input id="slide1" type="radio" name="slide" checked />
         <input id="slide2" type="radio" name="slide" />
