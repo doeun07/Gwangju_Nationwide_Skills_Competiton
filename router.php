@@ -19,6 +19,9 @@ switch ($resource[3]) {
     case 'logout':
         $page = "./C_Module/api/logout.php";
         break;
+    case 'mypage':
+        $page = "./C_Module/api/mypage.php";
+        break;
     default:
         echo "잘못된 접근입니다.";
         break;

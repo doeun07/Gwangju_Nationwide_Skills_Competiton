@@ -43,8 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $stmt->execute();
 
         $response = [
-            "id" => $user["userid"],
+            "id" => $user["id"],
+            "userid" => $user["userid"],
             "name" => $user["username"],
+            "apikey" => $user["apikey"],
             "token" => $token,
             "message" => "로그인 성공"
         ];

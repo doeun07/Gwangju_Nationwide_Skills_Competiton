@@ -539,11 +539,15 @@ function login() {
       userpassword: pw,
     }).done(function (data) {
       if (data.message === "로그인 성공") {
-        alert(data.message);
-        setCookie("token", data.token, 7);
-        setCookie("userid", data.id, 7);
-        setCookie("username", data.name, 7);
-        location.href = "./";
+        if (!data.apikey) {
+          alert("apikey를 발급받으세요.");
+          alert(data.message);
+          setCookie("id", data.id, 7);
+          setCookie("token", data.token, 7);
+          setCookie("userid", data.userid, 7);
+          setCookie("username", data.name, 7);
+          location.href = "./";
+        }
       } else if (data.message === "로그인 실패") {
         alert(data.message);
       } else {
@@ -586,10 +590,9 @@ function deleteCookie(name) {
 function logout() {
   $.post("./C_Module/api/logout", {
     userid: getCookie("userid"),
-    username: getCookie("username"),
-    token: getCookie("token"),
   }).done(function (data) {
     if (data == "로그아웃 성공") {
+      deleteCookie("id");
       deleteCookie("token");
       deleteCookie("userid");
       deleteCookie("username");
@@ -604,13 +607,14 @@ function loginCheck() {
   const header_section = document.querySelector("#header_section");
   const mypage = document.querySelector("#mypage");
   let headerElem = "";
-  let mypageElem = `<a href="#">마이페이지</a>`;
+  let mypageElem = `<a href="./mypage.php">마이페이지</a>`;
   mypage.innerHTML = mypageElem;
   if (!getCookie("token")) {
     // alert("로그인 후 이용해주세요.");
     headerElem = `<li><label for="login">로그인</label></li>
             <li><label onclick="captcha()" for="register">회원가입</label></li>`;
     header_section.innerHTML = headerElem;
+    // location.href = "./";
   } else if (getCookie("token")) {
     // console.log(getCookie("token"));
     $.get("./C_Module/api/login", {
@@ -621,8 +625,8 @@ function loginCheck() {
       if (data == "이미 로그인 되었습니다.") {
         headerElem = `<li><label onclick="logout()">로그아웃</label></li>`;
         header_section.innerHTML = headerElem;
-        if ((getCookie("userid") == "admin")) {
-          mypageElem = `<a href="#">관리자페이지</a>`;
+        if (getCookie("userid") == "admin") {
+          mypageElem = `<a href="./admin.php">관리자페이지</a>`;
           mypage.innerHTML = mypageElem;
         }
       } else {
@@ -637,3 +641,80 @@ function loginCheck() {
 }
 
 loginCheck();
+
+// 로그인 하지 않으면 에러메시지 없이 메인페이지로 이동.
+function mypageLoginCheck() {
+  if (!getCookie("token")) {
+    location.href = "./";
+  }
+}
+
+// apikey 신청 현황
+function mypageApikeyList() {
+  const apikeylist = document.querySelector("#apikey_list");
+  let apiListElem = "";
+  let deleteBtn = `<button onclick="apikeyDelete()" disabled type="button" class="btn btn-danger">삭제</button>`;
+  const apiAddBtn = document.querySelector("#apiAddBtn");
+  apiAddBtn.disabled = false;
+  $.get("./C_Module/api/mypage", {
+    id: getCookie("id"),
+  }).done(function (data) {
+    if (data.length == 0) {
+      alert("아직 발급받은 apikey가 없습니다.");
+    } else {
+      data.forEach(function (apikey) {
+        if(apikey.status == 1) {
+          apikey.status = "신청중";
+        } else if(apikey.status == 2) {
+          apikey.status = "발급됨";
+          apiAddBtn.disabled = true;
+          deleteBtn = `<button onclick="apikeyDelete()" type="button" class="btn btn-danger">삭제</button>`
+        } else {
+          apikey.status = "삭제됨";
+        }
+        apiListElem += `<tr>
+                <td>${apikey.username}</td>
+                <td>${apikey.userid}</td>
+                <td>${apikey.requested_at}</td>
+                <td>${apikey.status}</td>
+                <td>${apikey.issued_at || "없음"}</td>
+                <td>${apikey.apikey}</td>
+                <td>${apikey.deleted_at || "없음"}</td>
+                <td>${deleteBtn}</td>
+            </tr>`;
+        // console.log(apikey);
+      });
+      apikeylist.innerHTML = apiListElem;
+      // console.log(data);
+    }
+  });
+}
+
+// apikey 신청
+function apikeyApp() {
+  $.post("./C_Module/api/mypage", {
+    id: getCookie("id"),
+    apikeyapp: true,
+  }).done(function (data) {
+    if (data == "apikey 발급 대기 중") {
+      alert(data);
+      location.href = "./";
+    }
+  });
+}
+
+// apikey 삭제
+function apikeyDelete() {
+ $.post("./C_Module/api/mypage", {
+  id: getCookie("id"),
+  delete: true,
+ }).done(function (data){
+  if(data == "apikey가 삭제되었습니다.") {
+    alert(data);
+    logout();
+  } else {
+    alert(data);
+    console.log(data);
+  }
+ })
+}
