@@ -663,12 +663,12 @@ function mypageApikeyList() {
       alert("아직 발급받은 apikey가 없습니다.");
     } else {
       data.forEach(function (apikey) {
-        if(apikey.status == 1) {
+        if (apikey.status == 1) {
           apikey.status = "신청중";
-        } else if(apikey.status == 2) {
+        } else if (apikey.status == 2) {
           apikey.status = "발급됨";
           apiAddBtn.disabled = true;
-          deleteBtn = `<button onclick="apikeyDelete()" type="button" class="btn btn-danger">삭제</button>`
+          deleteBtn = `<button onclick="apikeyDelete()" type="button" class="btn btn-danger">삭제</button>`;
         } else {
           apikey.status = "삭제됨";
         }
@@ -698,23 +698,95 @@ function apikeyApp() {
   }).done(function (data) {
     if (data == "apikey 발급 대기 중") {
       alert(data);
-      location.href = "./";
+      location.href = "./mypage.php";
     }
   });
 }
 
 // apikey 삭제
 function apikeyDelete() {
- $.post("./C_Module/api/mypage", {
-  id: getCookie("id"),
-  delete: true,
- }).done(function (data){
-  if(data == "apikey가 삭제되었습니다.") {
-    alert(data);
-    logout();
-  } else {
-    alert(data);
-    console.log(data);
-  }
- })
+  $.post("./C_Module/api/mypage", {
+    id: getCookie("id"),
+    delete: true,
+  }).done(function (data) {
+    if (data == "apikey가 삭제되었습니다.") {
+      alert(data);
+      logout();
+    } else {
+      alert(data);
+      console.log(data);
+    }
+  });
+}
+
+// 관리자 페이지 : apikey 신청 현황
+function adminApikeyList() {
+  const apikeylist = document.querySelector("#apikey_list");
+  let apiListElem = "";
+
+  $.get("./C_Module/api/admin").done(function (data) {
+    if (data.length == 0) {
+      alert("신청내역이 없습니다.");
+    } else {
+      data.forEach(function (apikey) {
+        let deleteBtn = `<button onclick="adminApikeyDelete('${apikey.apikey}')" disabled type="button" class="btn btn-danger">삭제</button>`;
+        let okBtn = `<button onclick="apikeyOk('${apikey.apikey}')" disabled type="button" class="btn btn-primary">승인</button>`;
+
+        if (apikey.status == 1) {
+          apikey.status = "신청중";
+          okBtn = `<button onclick="apikeyOk('${apikey.apikey}')" type="button" class="btn btn-primary">승인</button>`;
+        } else if (apikey.status == 2) {
+          apikey.status = "발급됨";
+          deleteBtn = `<button onclick="adminApikeyDelete('${apikey.apikey}')" type="button" class="btn btn-danger">삭제</button>`;
+        } else {
+          apikey.status = "삭제됨";
+        }
+
+        apiListElem += `<tr>
+                <td>${apikey.username}</td>
+                <td>${apikey.userid}</td>
+                <td>${apikey.requested_at}</td>
+                <td>${apikey.status}</td>
+                <td>${apikey.issued_at || "없음"}</td>
+                <td>${apikey.apikey}</td>
+                <td>${apikey.deleted_at || "없음"}</td>
+                <td>${deleteBtn}</td>
+                <td>${okBtn}</td>
+            </tr>`;
+      });
+      apikeylist.innerHTML = apiListElem;
+    }
+  });
+}
+
+function apikeyOk(value) {
+  const apikey = value;
+  $.post("./C_Module/api/admin", {
+    apikey: apikey,
+    Ok: true,
+  }).done(function (data) {
+    if (data == "승인 완료") {
+      alert(data);
+      location.href = "./admin.php";
+    } else {
+      alert(data);
+      console.log(data);
+    }
+  });
+}
+
+function adminApikeyDelete(value) {
+  const apikey = value;
+  $.post("./C_Module/api/admin", {
+    apikey: apikey,
+    delete: true,
+  }).done(function (data) {
+    if (data == "삭제 완료") {
+      alert(data);
+      location.href = "./admin.php";
+    } else {
+      alert(data);
+      console.log(data);
+    }
+  });
 }
